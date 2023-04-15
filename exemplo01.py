@@ -19,12 +19,12 @@ atributos=data.columns
 print('Os atributos do conjunto de dados sao: ' + str(atributos.values))
 
 #moste na tela o conjudo de dados ordenados pela coluna price
-#print(data[['id', 'price']].sort_values('price', ascending=False))
+print(data[['id', 'price']].sort_values('price', ascending=False))
 
 #Resolvendo os exercicios adicionais
 #6. Qual a soma total de quartos do conjunto de dados?
 #R:  print('A soma total de quartos do conjunto de dados é ',data[['bedrooms']].sum())
-#print('Os atributos do conjunto de dados sao: ' + str(atributos.values))
+print('Os atributos do conjunto de dados sao: ' + str(atributos.values))
 
 # 7. Quantas casas possuem 2 banheiros?
 print( data.loc[data['bedrooms']>2].shape[0], 'casas possuem 2 banheiros',)
@@ -45,3 +45,22 @@ print('O preco medio de casas com 2 banheiros é ',round(media_2,2),)
 # 10. Qual minimo preco minimo entre as casas com 3 quartos?
 min=data['price'].loc[data['bedrooms']==3].min()
 print('O minimo preco entre as casas com 3 quartos é ', min,)
+
+
+# 11. Quantas casas, possuem mais de 300 metros quadrados
+casa_mais_300=data['sqft_living'].loc[data['sqft_living']>300].count()
+print(casa_mais_300,'casas com mais de 300 metros quadrados ')
+
+# 12. Quantas casas, tem mais de 2 andares?
+casa_mais_2_andares=data['floors'].loc[data['floors']>2].count()
+print(casa_mais_2_andares,'casas com mais de 2 andares.')
+
+# 13. Quantas casas, tem vista ao mar?
+casa_mais_2_andares=data['waterfront'].loc[data['waterfront']==1].count()
+print(casa_mais_2_andares,'casas com vista ao mar.')
+
+# 14. Das casas com vista para o mar, quantas tem mais de 3 quartos na sala de estar
+vista_ao_mar_e_mais_3_andares=data['waterfront'].loc[(data['waterfront']==1) & (data['bedrooms']>3)].count()
+print(vista_ao_mar_e_mais_3_andares,'casas com vista ao mar e mais de 3 quartos.')
+
+# 15. Das casas com mais de 300 metros quadrados de sala
